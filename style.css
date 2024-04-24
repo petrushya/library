@@ -80,17 +80,21 @@ button:is(:hover, :focus){
 .btnOpenForm{
   max-block-size: 2lh;
   min-inline-size: 17ch;
-  margin: 2.5rlh auto;
+  margin: 2.5rlh 2ch;
 }
 
 .empty{
-  flex: 1 0 85ch;
+  flex: 1 0 77ch;
+  margin: 2.5rlh 1ch;
+}
+.empty p{
+  margin: 1rlh 5ch;
 }
 
 form{
   flex: 1 0 54ch;
-  margin: 2rem auto;
-  transform: translateX(-60ch);
+  margin: 2.5rlh 1ch;
+  transform: translateX(-70ch);
   z-index: 1;
 }
 fieldset{

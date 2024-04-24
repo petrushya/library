@@ -44,4 +44,10 @@ function displayBook(array){
 
 displayBook(myLibrary);
 
-
+form.onsubmit = (e) =>{
+  e.preventDefault();
+  if(bookTitle.value && bookAuthor.value && bookPages.value){
+    addBookToLibrary(myLibrary,bookTitle.value,bookAuthor.value,bookPages.value,bookStatus.value);
+    displayBook(myLibrary);
+  }
+} 
