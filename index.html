@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="all-wrapper">
+    <table>
+      <caption></caption>
+      <thead>
+        <tr>
+          <th scope="col">&#x2116;</th>
+          <th scope="col">book title</th>
+          <th scope="col">book author</th>
+          <th scope="col">number of pages</th>
+          <th scope="col">read status</th>
+          <th scope="col">delete book?</th>
+          <tbody></tbody>
+        </tr>
+      </thead>
+    </table>
+    <div class="getNewBook">
+      <button type="button" class="newBook">new book</button>
+      <div class="empty"></div>
+      <form method="get">
+        <fieldset>
+          <legend>Data of a new book</legend>
+          <label for="bookTitle">Book title<input type="text" id="bookTitle" name="bookTitle"></label>
+          <label for="bookAuthor">Book author<input type="text" id="bookAuthor" name="bookAuthor"></label>
+          <label for="bookPages">Book pages<input type="number" id="bookPages" name="bookPages" min="10"></label>
+          <label for="bookStatus">Read status:
+            <select id="bookStatus" name="bookStatus">
+              <option value="not read yet">not read yet</option>
+              <option value="already read">already read</option>
+            </select>
+          </label>
+          <button type="submit" id="addBook">add book</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
