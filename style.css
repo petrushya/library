@@ -1,0 +1,126 @@
+
+*{
+  margin: 0;
+  color: hsl(240, 64%, 10%);
+}
+.all-wrapper{
+  background-color: hsl(240, 64%, 95%);
+  min-block-size: 100vh;
+  font-family: sans-serif;
+}
+
+table{
+  margin: 0 auto;
+  max-inline-size: 100ch;
+  background-color: hsl(240, 64%, 97%);
+  border-collapse: collapse;
+  border: thick solid hsl(240, 64%, 40%);
+}
+caption{
+  margin-block-start: 3lh;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: hsl(240, 64%, 25%);
+}
+tr{
+  border-block-end: thin solid hsl(240, 64%, 99%);
+}
+tr:nth-child(odd){
+  background-color: hsl(240, 64%, 99%);
+}
+th{
+  padding: 0.5rlh;
+  text-align: center;
+  font-size: 1.5rem;
+  font-variant: small-caps;
+  background-color: hsl(240, 64%, 40%);
+  border-inline-end: thin  solid hsl(240, 64%, 99%);
+  color: hsl(240, 64%, 99%);
+}
+td{
+  padding: 0.25rlh 0.5rlh;
+  font-size: 1.125rem;
+  text-align: center;
+}
+td:nth-child(2)::first-letter{
+  text-transform: capitalize;
+}
+td:nth-child(3){
+  text-transform: capitalize;
+}
+.getNewBook{
+  inline-size: 100ch;
+  margin: 0 auto;
+  padding: 1rlh 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+button{
+  max-inline-size: 17ch;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rlh 1.5rlh;
+  background-color: hsl(240, 64%, 35%);
+  border: none;
+  border-radius: 1ch;
+  box-shadow: inset 0 0 1ch hsl(240, 64%, 99%);
+  caret-color: transparent;
+  color: hsl(240, 64%, 99%);
+}
+button:is(:hover, :focus){
+  background-color: hsl(240, 64%, 40%);
+}
+.newBook{
+  max-block-size: 2lh;
+  min-inline-size: 20ch;
+  margin: 2.5rlh auto;
+}
+
+.empty{
+  flex: 1 0 85ch;
+}
+
+form{
+  flex: 1 0 54ch;
+  margin: 2rem auto;
+  transform: translateX(-60ch);
+  z-index: 1;
+}
+fieldset{
+  background-color: hsl(240, 64%, 98%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
+  row-gap: 2.5ch;
+  column-gap: 1ch;
+  padding: 1rlh 0.5rlh;
+}
+label{
+  flex: 0 1 48.25%;
+  display: block;
+}
+input{
+  margin-block-start: 0.25ch;
+  inline-size: 95%;
+}
+select{
+  padding: 0.375rlh;
+  font-size: 1rem;
+  font-weight: bold;
+  font-variant: small-caps;
+  background-color: hsl(240, 64%, 90%);
+  border: none;
+  border-radius: 1ch;
+}
+select:is(:hover, :focus){
+  outline: medium solid hsl(240, 64%, 40%);
+}
+
+
