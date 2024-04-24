@@ -20,6 +20,7 @@ function addBookToLibrary(array,title,author,pages,status){
 }
 
 function displayBook(array){
+  while(tbody.lastChild) tbody.removeChild(tbody.lastChild);
   for (let index = 0; index < array.length; index++) {
     const tableRow = document.createElement('tr');
     const cellHead = document.createElement('th');
@@ -39,6 +40,10 @@ function displayBook(array){
     cellBtn.appendChild(deletBtn);
     tableRow.appendChild(cellBtn);
     tbody.appendChild(tableRow);
+    deletBtn.addEventListener("click", () => {
+      array.splice(index, 1);
+      displayBook(array);
+    });
   };
 }
 
@@ -49,5 +54,8 @@ form.onsubmit = (e) =>{
   if(bookTitle.value && bookAuthor.value && bookPages.value){
     addBookToLibrary(myLibrary,bookTitle.value,bookAuthor.value,bookPages.value,bookStatus.value);
     displayBook(myLibrary);
-  }
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    bookPages.value = '';
+}
 } 
