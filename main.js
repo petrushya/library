@@ -28,9 +28,41 @@ function displayBook(array){
     cellHead.textContent = index + 1;
     tableRow.appendChild(cellHead);
     for(const key in array[index]){
-      const cellTable = document.createElement('td');
-      cellTable.textContent = array[index][key];
-      tableRow.appendChild(cellTable);
+      if (key === 'status') {
+        const cellStatus = document.createElement('td');
+        cellStatus.textContent = array[index][key];
+        cellStatus.className = 'status';
+        cellStatus.setAttribute('tabindex', '1');
+        tableRow.appendChild(cellStatus);
+        cellStatus.onclick = () => {
+          if(cellStatus.textContent === 'not read yet') {
+            cellStatus.textContent = 'already read';
+            array[index][key] = 'already read';
+            cellStatus.blur();
+          }else{
+            cellStatus.textContent = 'not read yet';
+            array[index][key] = 'not read yet';
+            cellStatus.blur();
+          };
+        };
+        cellStatus.onkeydown = (e) => {
+          if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            if(cellStatus.textContent === 'not read yet') {
+              cellStatus.textContent = 'already read';
+              array[index][key] = 'already read';
+              cellStatus.blur();            
+            } else {
+              cellStatus.textContent = 'not read yet';
+              array[index][key] = 'not read yet';
+              cellStatus.blur();            
+            };
+          };
+        };
+      } else {
+        const cellTable = document.createElement('td');
+        cellTable.textContent = array[index][key];
+        tableRow.appendChild(cellTable);          
+      };
     };
     const deletBtn = document.createElement('button');
     deletBtn.textContent = 'delete';
@@ -57,5 +89,5 @@ form.onsubmit = (e) =>{
     bookTitle.value = '';
     bookAuthor.value = '';
     bookPages.value = '';
-}
-} 
+  };
+};

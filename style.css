@@ -1,7 +1,7 @@
 
 *{
   margin: 0;
-  color: hsl(240, 64%, 10%);
+  color: hsl(240, 64%, 15%);
 }
 .all-wrapper{
   background-color: hsl(240, 64%, 95%);
@@ -49,16 +49,26 @@ td:nth-child(2)::first-letter{
 td:nth-child(3){
   text-transform: capitalize;
 }
+.status::after{
+  content: '\2195';
+  padding-inline-start: 0.25ch;
+}
+.status:is(:hover, :focus){
+  color: hsl(240, 64%, 40%);
+}
+.status, button{
+  cursor: pointer;
+  outline-color: hsl(240, 64%, 40%);
+}
 
 .getNewBook{
   inline-size: 100ch;
   margin: 0 auto;
-  padding: 1rlh 0;
   overflow-x: hidden;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: start;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: start;
 }
 
 button{
@@ -66,11 +76,11 @@ button{
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: bold;
-  padding: 0.5rlh 1.5rlh;
+  padding: 0.5rlh 1rlh;
   background-color: hsl(240, 64%, 35%);
   border: none;
   border-radius: 1ch;
-  box-shadow: inset 0 0 1ch hsl(240, 64%, 99%);
+  box-shadow: inset 0 0 0.75ch hsl(240, 64%, 98%);
   caret-color: transparent;
   color: hsl(240, 64%, 99%);
 }
@@ -84,7 +94,7 @@ button:is(:hover, :focus){
 }
 
 .empty{
-  flex: 1 0 77ch;
+  flex: 0 0 77ch;
   margin: 2.5rlh 1ch;
 }
 .empty p{
@@ -92,9 +102,9 @@ button:is(:hover, :focus){
 }
 
 form{
-  flex: 1 0 54ch;
-  margin: 2.5rlh 1ch;
-  transform: translateX(-70ch);
+  flex: 0 0 54ch;
+  margin: 2.5rlh 6ch;
+  transform: translateX(-73ch);
   z-index: 1;
 }
 fieldset{
@@ -106,6 +116,14 @@ fieldset{
   row-gap: 2.5ch;
   column-gap: 1ch;
   padding: 1rlh 0.5rlh;
+  border-color: hsl(240, 64%, 40%);
+  border-radius: 1ch;
+  box-shadow: 0 0 3ch hsl(240, 64%, 40%);
+}
+legend{
+  color: hsl(240, 64%, 40%);
+  background-color: hsl(240, 64%, 98%, 0.75);
+  border-radius: 0.25lh;
 }
 label{
   flex: 0 1 48.25%;
