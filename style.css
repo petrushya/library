@@ -49,6 +49,7 @@ td:nth-child(2)::first-letter{
 td:nth-child(3){
   text-transform: capitalize;
 }
+
 .getNewBook{
   inline-size: 100ch;
   margin: 0 auto;
@@ -76,9 +77,9 @@ button{
 button:is(:hover, :focus){
   background-color: hsl(240, 64%, 40%);
 }
-.newBook{
+.btnOpenForm{
   max-block-size: 2lh;
-  min-inline-size: 20ch;
+  min-inline-size: 17ch;
   margin: 2.5rlh auto;
 }
 
