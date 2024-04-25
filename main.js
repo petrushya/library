@@ -1,5 +1,5 @@
 
-const myLibrary = [{title: 'some new book', author: 'very famous author', pages: 333, status: 'not read yet'}];
+const myLibrary = [{title: 'some new book', author: 'very famous author', pages: 333, status: 'not read yet'}, {title: 'very old book', author: 'one of several authors', pages: 1111, status: 'already read'}];
 const bookTitle = document.querySelector('#bookTitle');
 const bookAuthor = document.querySelector('#bookAuthor');
 const bookPages = document.querySelector('#bookPages');
@@ -7,6 +7,7 @@ const bookStatus = document.querySelector('#bookStatus');
 const form = document.querySelector('form');
 const tbody = document.querySelector('tbody');
 const btnOpenForm = document.querySelector('.btnOpenForm');
+const clozeForm = document.querySelector('.clozeForm');
 
 function Book(title,author,pages,status){
   this.title=title;
@@ -32,7 +33,7 @@ function displayBook(array){
         const cellStatus = document.createElement('td');
         cellStatus.textContent = array[index][key];
         cellStatus.className = 'status';
-        cellStatus.setAttribute('tabindex', '1');
+        cellStatus.setAttribute('tabindex', '0');
         tableRow.appendChild(cellStatus);
         cellStatus.onclick = () => {
           if(cellStatus.textContent === 'not read yet') {
@@ -50,11 +51,11 @@ function displayBook(array){
             if(cellStatus.textContent === 'not read yet') {
               cellStatus.textContent = 'already read';
               array[index][key] = 'already read';
-              cellStatus.blur();            
+              cellStatus.blur();
             } else {
               cellStatus.textContent = 'not read yet';
               array[index][key] = 'not read yet';
-              cellStatus.blur();            
+              cellStatus.blur();
             };
           };
         };
@@ -86,8 +87,26 @@ form.onsubmit = (e) =>{
   if(bookTitle.value && bookAuthor.value && bookPages.value){
     addBookToLibrary(myLibrary,bookTitle.value,bookAuthor.value,bookPages.value,bookStatus.value);
     displayBook(myLibrary);
+    form.removeAttribute('class');
     bookTitle.value = '';
     bookAuthor.value = '';
     bookPages.value = '';
   };
 };
+
+btnOpenForm.onclick = () => {
+    form.className = 'transform';
+    btnOpenForm.blur();
+};
+
+clozeForm.onclick = () => {
+  form.removeAttribute('class');
+  bookTitle.value = '';
+  bookAuthor.value = '';
+  bookPages.value = '';
+};
+
+window.onkeydown = (e) => {
+  if(e.key === 'Escape' && form.className === 'transform') form.removeAttribute('class');
+}
+

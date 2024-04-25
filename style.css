@@ -1,7 +1,7 @@
 
 *{
   margin: 0;
-  color: hsl(240, 64%, 15%);
+  color: hsl(240, 64%, 25%);
 }
 .all-wrapper{
   background-color: hsl(240, 64%, 95%);
@@ -11,43 +11,55 @@
 
 table{
   margin: 0 auto;
-  max-inline-size: 100ch;
-  background-color: hsl(240, 64%, 97%);
+  background-color: hsl(240, 64%, 75%);
+  border-inline-start: thick solid hsl(240, 64%, 75%);
+  border-inline-end: thick solid hsl(240, 64%, 75%);
   border-collapse: collapse;
-  border: thick solid hsl(240, 64%, 40%);
 }
 caption{
-  margin-block-start: 3lh;
+  margin: 3lh 0 0.25lh;
   font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: hsl(240, 64%, 25%);
 }
-tr{
-  border-block-end: thin solid hsl(240, 64%, 99%);
-}
-tr:nth-child(odd){
-  background-color: hsl(240, 64%, 99%);
+th,td{
+  text-align: center;
 }
 th{
-  padding: 0.5rlh;
-  text-align: center;
-  font-size: 1.5rem;
-  font-variant: small-caps;
-  background-color: hsl(240, 64%, 40%);
-  border-inline-end: thin  solid hsl(240, 64%, 99%);
+  border-inline-end: thick solid hsl(240, 64%, 75%);
   color: hsl(240, 64%, 99%);
 }
-td{
-  padding: 0.25rlh 0.5rlh;
+thead th{
+  background: linear-gradient(hsl(240, 64%, 75%), hsl(240, 64%, 40%));
+  border-block-end: thick solid hsl(240, 64%, 75%);
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  padding: 0.75rlh;
+}
+tbody th{
+  background-color: hsl(240, 64%, 40%);
+  border-block-start: thick solid hsl(240, 64%, 75%);
+}
+tbody td{
   font-size: 1.125rem;
-  text-align: center;
+  padding: 0.25rlh 0.5rlh;
 }
-td:nth-child(2)::first-letter{
+tbody td + td{
+  border-inline-start: thin solid hsl(240, 64%, 40%, 0.15);
+}
+tbody tr:nth-child(odd){
+  background-color: hsl(240, 64%, 99%);
+}
+tbody tr:nth-child(even){
+  background-color: hsl(240, 64%, 95%);
+}
+tbody td:nth-child(2)::first-letter, tbody td:nth-child(3){
   text-transform: capitalize;
 }
-td:nth-child(3){
-  text-transform: capitalize;
+tfoot td{
+  background: linear-gradient(to top, hsl(240, 64%, 75%), hsl(240, 64%, 40%));
+  padding: 0.375rlh 0;
+  border-block-start: thick solid hsl(240, 64%, 75%);
 }
 .status::after{
   content: '\2195';
@@ -55,75 +67,63 @@ td:nth-child(3){
 }
 .status:is(:hover, :focus){
   color: hsl(240, 64%, 40%);
+  text-shadow: 0 0 0.5lh hsl(240, 64%, 25%);
 }
 .status, button{
   cursor: pointer;
   outline-color: hsl(240, 64%, 40%);
 }
 
-.getNewBook{
-  inline-size: 100ch;
-  margin: 0 auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: start;
-}
-
 button{
-  max-inline-size: 17ch;
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: bold;
-  padding: 0.5rlh 1rlh;
-  background-color: hsl(240, 64%, 35%);
+  padding: 0.5rlh 1.5rlh;
+  background-color: hsl(240, 64%, 25%);
   border: none;
   border-radius: 1ch;
-  box-shadow: inset 0 0 0.75ch hsl(240, 64%, 98%);
+  box-shadow: inset 0 0 1ch hsl(240, 64%, 95%);
   caret-color: transparent;
   color: hsl(240, 64%, 99%);
 }
 button:is(:hover, :focus){
   background-color: hsl(240, 64%, 40%);
 }
-.btnOpenForm{
-  max-block-size: 2lh;
-  min-inline-size: 17ch;
-  margin: 2.5rlh 2ch;
-}
-
-.empty{
-  flex: 0 0 77ch;
-  margin: 2.5rlh 1ch;
-}
-.empty p{
-  margin: 1rlh 5ch;
-}
 
 form{
-  flex: 0 0 54ch;
-  margin: 2.5rlh 6ch;
-  transform: translateX(-73ch);
-  z-index: 1;
+  position: absolute;
+  top: 20vh;
+  left: -60ch;
+  inline-size: 54ch;
+  padding: 0.5rlh 0.5rlh 1rlh;
+  background-color: hsl(240, 64%, 95%);
+  border-radius: 1rlh;
+  box-shadow: 0 0 5ch hsl(240, 64%, 25%);
+  text-align: center;
+  transform: translateX(0);
+  visibility: visible;
+  opacity: 1;
+  transition-property: transform, visibility, opacity;
+  transition-duration: 500ms;
+}
+form.transform{
+  transform: translateX(calc(400px + 41vi));
+  visibility: visible;
+  opacity: 1;
 }
 fieldset{
-  background-color: hsl(240, 64%, 98%);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: end;
   row-gap: 2.5ch;
   column-gap: 1ch;
-  padding: 1rlh 0.5rlh;
-  border-color: hsl(240, 64%, 40%);
-  border-radius: 1ch;
-  box-shadow: 0 0 3ch hsl(240, 64%, 40%);
+  text-align: start;
+  padding: 1rlh 0 2rlh;
+  border: none;
 }
 legend{
-  color: hsl(240, 64%, 40%);
-  background-color: hsl(240, 64%, 98%, 0.75);
-  border-radius: 0.25lh;
+  text-decoration: underline;
 }
 label{
   flex: 0 1 48.25%;
@@ -139,11 +139,27 @@ select{
   font-weight: bold;
   font-variant: small-caps;
   background-color: hsl(240, 64%, 90%);
-  border: none;
+  border: thin solid hsl(240, 64%, 40%);
   border-radius: 1ch;
 }
 select:is(:hover, :focus){
   outline: medium solid hsl(240, 64%, 40%);
 }
-
+#addBook{
+  margin-inline-end: 5lh;
+}
+.clozeForm{
+  position: absolute;
+  top: 2.5%;
+  right: 1.25%;
+  padding: 0 0.25lh;
+  font-size: 1.5rem;
+  border: thin solid hsl(240, 64%, 25%);
+  background-color: hsl(240, 64%, 95%);
+  color: hsl(240, 64%, 25%);
+}
+.clozeForm:is(:hover, :focus){
+  outline-color: hsl(240, 64%, 40%);
+  color: hsl(240, 64%, 99%);
+}
 

@@ -19,31 +19,34 @@
           <th scope="col">number of pages</th>
           <th scope="col">read status</th>
           <th scope="col">delete book?</th>
-          <tbody></tbody>
         </tr>
       </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <button type="button" class="btnOpenForm">add book</button>
+          </td>
+        </tr>
+      </tfoot>
     </table>
-    <div class="getNewBook">
-      <button type="button" class="btnOpenForm">cloze form</button>
-      <div class="empty">
-        <p>* Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia soluta, ullam quis repellendus doloremque tempora ut nam facilis delectus provident?</p>
-      </div>
-      <form method="get">
-        <fieldset>
-          <legend>Data of a new book</legend>
-          <label for="bookTitle">Book title<input type="text" id="bookTitle" name="bookTitle"></label>
-          <label for="bookAuthor">Book author<input type="text" id="bookAuthor" name="bookAuthor"></label>
-          <label for="bookPages">Book pages<input type="number" id="bookPages" name="bookPages" min="10"></label>
-          <label for="bookStatus">Read status:
-            <select id="bookStatus" name="bookStatus">
-              <option value="not read yet">not read yet</option>
-              <option value="already read">already read</option>
-            </select>
-          </label>
-          <button type="submit" id="addBook">add book</button>
-        </fieldset>
-      </form>
-    </div>
+    <form method="get">
+      <fieldset>
+        <legend>Data of a new book</legend>
+        <label for="bookTitle">Book title<input type="text" id="bookTitle" name="bookTitle"></label>
+        <label for="bookAuthor">Book author<input type="text" id="bookAuthor" name="bookAuthor"></label>
+        <label for="bookPages">Book pages<input type="number" id="bookPages" name="bookPages" min="10"></label>
+        <label for="bookStatus">Read status:
+          <select id="bookStatus" name="bookStatus">
+            <option value="not read yet">not read yet</option>
+            <option value="already read">already read</option>
+          </select>
+        </label>
+      </fieldset>
+      <button type="submit" id="addBook">add book</button>
+      <button type="reset" class="resButton">clear</button>
+      <button type="button" class="clozeForm">X</button>
+    </form>
   </div>
 </body>
 </html>
