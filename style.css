@@ -133,7 +133,6 @@ legend{
 }
 label{
   inline-size: 100%;
-
   display: block;
 }
 input{
@@ -157,4 +156,3 @@ input{
   outline-color: hsl(240, 64%, 40%);
   color: hsl(240, 64%, 99%);
 }
-

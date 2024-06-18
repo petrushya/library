@@ -3,17 +3,19 @@ const myLibrary = [
   {title: 'some new book', author: 'very famous author', pages: 333, status: status(), deletBtn: deletBtn()},
   {title: 'very old book', author: 'one of several authors', pages: 1111, status: status(), deletBtn: deletBtn()}
 ];
+const form = document.querySelector('form');
 const bookTitle = document.querySelector('#bookTitle');
 const bookAuthor = document.querySelector('#bookAuthor');
 const bookPages = document.querySelector('#bookPages');
-const form = document.querySelector('form');
 const tbody = document.querySelector('tbody');
+const btnAddBook = document.querySelector('#btnAddBook');
 const btnOpenForm = document.querySelector('.btnOpenForm');
 const btnClozeForm = document.querySelector('.btnClozeForm');
 const btnClear = document.querySelector('.btnReset');
 
 btnOpenForm.onclick = () => {
   form.className = 'transform';
+  notice.textContent = '';
   btnOpenForm.blur();
 };
 
@@ -26,6 +28,8 @@ form.onsubmit = (e) =>{
     bookTitle.value = '';
     bookAuthor.value = '';
     bookPages.value = '';
+  }else{
+    btnAddBook.blur();
   };
 };
 
