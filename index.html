@@ -14,11 +14,11 @@
       <thead>
         <tr>
           <th scope="col">&#x2116;</th>
-          <th scope="col">book title</th>
-          <th scope="col">book author</th>
-          <th scope="col">number of pages</th>
-          <th scope="col">read status</th>
-          <th scope="col">delete book?</th>
+          <th scope="col">title</th>
+          <th scope="col">author</th>
+          <th scope="col">pages</th>
+          <th scope="col">status</th>
+          <th scope="col">deletion</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -33,19 +33,13 @@
     <form method="get">
       <fieldset>
         <legend>Data of a new book</legend>
-        <label for="bookTitle">Book title<input type="text" id="bookTitle" name="bookTitle"></label>
-        <label for="bookAuthor">Book author<input type="text" id="bookAuthor" name="bookAuthor"></label>
-        <label for="bookPages">Book pages<input type="number" id="bookPages" name="bookPages" min="10"></label>
-        <label for="bookStatus">Read status:
-          <select id="bookStatus" name="bookStatus">
-            <option value="not read yet">not read yet</option>
-            <option value="already read">already read</option>
-          </select>
-        </label>
+        <label for="bookTitle">Title<input type="text" id="bookTitle" name="bookTitle"></label>
+        <label for="bookAuthor">Author<input type="text" id="bookAuthor" name="bookAuthor"></label>
+        <label for="bookPages">Pages<input type="number" id="bookPages" name="bookPages" min="10"></label>
       </fieldset>
-      <button type="submit" id="addBook">add book</button>
-      <button type="reset" class="resButton">clear</button>
-      <button type="button" class="clozeForm">X</button>
+      <button type="submit" id="btnAddBook">add book</button>
+      <button type="reset" class="btnReset">clear</button>
+      <button type="button" class="btnClozeForm">X</button>
     </form>
   </div>
 </body>

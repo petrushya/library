@@ -15,6 +15,7 @@ table{
   border-inline-start: thick solid hsl(240, 64%, 75%);
   border-inline-end: thick solid hsl(240, 64%, 75%);
   border-collapse: collapse;
+  caret-color: transparent;
 }
 caption{
   margin: 3lh 0 0.25lh;
@@ -37,15 +38,15 @@ thead th{
   padding: 0.75rlh;
 }
 tbody th{
-  background-color: hsl(240, 64%, 40%);
-  border-block-start: thick solid hsl(240, 64%, 75%);
+  border-inline-end: thin solid hsl(240, 64%, 75%);
+  color: hsl(240, 64%, 25%);
 }
-tbody td{
+tbody td, select{
   font-size: 1.125rem;
   padding: 0.25rlh 0.5rlh;
 }
 tbody td + td{
-  border-inline-start: thin solid hsl(240, 64%, 40%, 0.15);
+  border-inline-start: thin solid hsl(240, 64%, 75%);
 }
 tbody tr:nth-child(odd){
   background-color: hsl(240, 64%, 99%);
@@ -61,15 +62,18 @@ tfoot td{
   padding: 0.375rlh 0;
   border-block-start: thick solid hsl(240, 64%, 75%);
 }
-.status::after{
-  content: '\2195';
-  padding-inline-start: 0.25ch;
+select{
+  padding: 0.375rlh;
+  font-weight: bold;
+  font-variant: small-caps;
+  background-color: transparent;
+  border: thin solid hsl(240, 64%, 40%, 0);
+  border-radius: 1ch;
 }
-.status:is(:hover, :focus){
-  color: hsl(240, 64%, 40%);
-  text-shadow: 0 0 0.5lh hsl(240, 64%, 25%);
+select:is(:hover, :focus){
+  outline: thin solid hsl(240, 64%, 40%);
 }
-.status, button{
+select, button{
   cursor: pointer;
   outline-color: hsl(240, 64%, 40%);
 }
@@ -93,9 +97,9 @@ button:is(:hover, :focus){
 form{
   position: absolute;
   top: 20vh;
-  left: -60ch;
-  inline-size: 54ch;
-  padding: 0.5rlh 0.5rlh 1rlh;
+  left: -40ch;
+  inline-size: 35ch;
+  padding-block-end: 1rlh;
   background-color: hsl(240, 64%, 95%);
   border-radius: 1rlh;
   box-shadow: 0 0 5ch hsl(240, 64%, 25%);
@@ -107,58 +111,49 @@ form{
   transition-duration: 500ms;
 }
 form.transform{
-  transform: translateX(calc(400px + 41vi));
+  transform: translateX(calc(50vi + 21ch));
   visibility: visible;
   opacity: 1;
 }
 fieldset{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: end;
-  row-gap: 2.5ch;
-  column-gap: 1ch;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  row-gap: 1.5ch;
   text-align: start;
-  padding: 1rlh 0 2rlh;
+  padding: 0;
+  margin: 1rlh 1rlh 2rlh;
   border: none;
 }
 legend{
-  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.25em;
+  margin-block-end: 1rlh;
 }
 label{
-  flex: 0 1 48.25%;
+  inline-size: 100%;
+
   display: block;
 }
 input{
-  margin-block-start: 0.25ch;
-  inline-size: 95%;
+  inline-size: 97.5%;
+  margin-block-start: 0.125lh;
 }
-select{
-  padding: 0.375rlh;
-  font-size: 1rem;
-  font-weight: bold;
-  font-variant: small-caps;
-  background-color: hsl(240, 64%, 90%);
-  border: thin solid hsl(240, 64%, 40%);
-  border-radius: 1ch;
+#btnAddBook{
+  margin-inline-end: 1.5rlh;
 }
-select:is(:hover, :focus){
-  outline: medium solid hsl(240, 64%, 40%);
-}
-#addBook{
-  margin-inline-end: 5lh;
-}
-.clozeForm{
+.btnClozeForm{
   position: absolute;
-  top: 2.5%;
-  right: 1.25%;
+  top: 2%;
+  right: 1.5%;
   padding: 0 0.25lh;
   font-size: 1.5rem;
   border: thin solid hsl(240, 64%, 25%);
   background-color: hsl(240, 64%, 95%);
   color: hsl(240, 64%, 25%);
 }
-.clozeForm:is(:hover, :focus){
+.btnClozeForm:is(:hover, :focus){
   outline-color: hsl(240, 64%, 40%);
   color: hsl(240, 64%, 99%);
 }
