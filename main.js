@@ -1,47 +1,48 @@
 
 const myLibrary = [
-  {title: 'some new book', author: 'very famous author', pages: 333, status: status(), deletBtn: deletBtn()},
-  {title: 'very old book', author: 'one of several authors', pages: 1111, status: status(), deletBtn: deletBtn()}
+  new Book('some new book','very famous author',333),
+  new Book('very old book','one of several authors',1111)
 ];
 const form = document.querySelector('form');
-const bookTitle = document.querySelector('#bookTitle');
-const bookAuthor = document.querySelector('#bookAuthor');
-const bookPages = document.querySelector('#bookPages');
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const pages = document.querySelector('#pages');
 const tbody = document.querySelector('tbody');
 const btnAddBook = document.querySelector('#btnAddBook');
 const btnOpenForm = document.querySelector('.btnOpenForm');
 const btnClozeForm = document.querySelector('.btnClozeForm');
-const btnClear = document.querySelector('.btnReset');
+const btnClean = document.querySelector('.btnReset');
 
 btnOpenForm.onclick = () => {
   form.className = 'transform';
-  notice.textContent = '';
+  title.focus();
   btnOpenForm.blur();
 };
 
 form.onsubmit = (e) =>{
   e.preventDefault();
-  if(bookTitle.value && bookAuthor.value && bookPages.value){
-    addBookToLibrary(myLibrary,bookTitle.value,bookAuthor.value,bookPages.value);
-    displayBook(myLibrary);
+  if(title.value && author.value && pages.value){
+    addBookToLibrary(title.value,author.value,pages.value);
+    displayBook();
     form.removeAttribute('class');
-    bookTitle.value = '';
-    bookAuthor.value = '';
-    bookPages.value = '';
+    title.value = '';
+    author.value = '';
+    pages.value = '';
   }else{
     btnAddBook.blur();
   };
 };
 
-btnClear.onclick = () => {
-  btnClear.blur();
+btnClean.onclick = () => {
+  title.focus();
+  btnClean.blur();
 };
 
 btnClozeForm.onclick = () => {
   form.removeAttribute('class');
-  bookTitle.value = '';
-  bookAuthor.value = '';
-  bookPages.value = '';
+  title.value = '';
+  author.value = '';
+  pages.value = '';
 };
 
 window.onkeydown = (e) => {
@@ -49,71 +50,72 @@ window.onkeydown = (e) => {
 }
 
 function Book(title,author,pages){
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status();
-  this.deletBtn = deletBtn();
-}
-
-function addBookToLibrary(array,title,author,pages){
-  return array.push(new Book(title,author,pages));
-}
-
-function status(){
-  const select = document.createElement('select');
-  select.setAttribute('name', 'choice');
-  const optionOne = document.createElement('option');
-  optionOne.setAttribute('value', 'not');
-  optionOne.setAttribute('selected', '');
-  optionOne.textContent='not read yet';
-  select.appendChild(optionOne);
-  const optionTwo = document.createElement('option');
-  optionTwo.setAttribute('value', 'yes');
-  optionTwo.textContent='already read';
-  select.appendChild(optionTwo);
-  select.onchange = (e) => {
-    if(e.target.value === optionTwo.value) optionOne.setAttribute('disabled', '');
-    select.blur();
+  this.bookInfo = [title, author, pages];
+  this.status = function(){
+    const select = document.createElement('select');
+    select.setAttribute('name', 'choice');
+    const optionOne = document.createElement('option');
+    optionOne.setAttribute('value', 'not');
+    optionOne.setAttribute('selected', '');
+    optionOne.textContent='not read yet';
+    select.appendChild(optionOne);
+    const optionTwo = document.createElement('option');
+    optionTwo.setAttribute('value', 'yes');
+    optionTwo.textContent='already read';
+    select.appendChild(optionTwo);
+    select.onchange = (e) => {
+      if(e.target.value === optionTwo.value) optionOne.setAttribute('disabled', '');
+      select.blur();
+    };
+    return select;
   };
-  return select;
+  this.btnDelet = function(){
+    const btnDelet = document.createElement('button');
+    btnDelet.textContent = 'delete';
+    btnDelet.className = 'deleteBook';
+    btnDelet.setAttribute('type', 'button');
+    return btnDelet;
+  };
+  this.bookData = function(){
+    const arr = [];
+    this.bookInfo.forEach(item => {
+      const para = document.createElement('p');
+      para.textContent = item;
+      arr.push(para);
+    });
+    arr.push(this.status(), this.btnDelet());
+    return arr;
+  };
+  return this.bookData();
 }
 
-function deletBtn(){
-  const deletBtn = document.createElement('button');
-  deletBtn.textContent = 'delete';
-  deletBtn.className = 'deleteBook';
-  deletBtn.setAttribute('type', 'button');
-  return deletBtn;
+function addBookToLibrary(title,author,pages){
+  myLibrary.push(new Book(title,author,pages));
 }
 
-function displayBook(array){
+function displayBook(){
   while(tbody.firstChild) tbody.removeChild(tbody.firstChild);
-  for (let index = 0; index < array.length; index++) {
+  for (let index = 0; index < myLibrary.length; index++) {
     const tableRow = document.createElement('tr');
     const cellHead = document.createElement('th');
     cellHead.setAttribute('scope', 'row');
     cellHead.textContent = index + 1;
     tableRow.appendChild(cellHead);
-    for(const key in array[index]){
-      const cellTable = document.createElement('td');
-      if(typeof array[index][key] !== 'object'){
-        cellTable.textContent = array[index][key];
-      }else{
-        cellTable.appendChild(array[index][key]);
-      };
-      tableRow.appendChild(cellTable);
-    };
+    myLibrary[index].forEach(item => {
+      const tableCell = document.createElement('td');
+      tableCell.appendChild(item);
+      tableRow.appendChild(tableCell);
+    });
     tbody.appendChild(tableRow);
   };
-  const deletBtn = document.querySelectorAll('.deleteBook');
-  deletBtn.forEach((button, index) => {
+  const btnDelet = document.querySelectorAll('.deleteBook');
+  btnDelet.forEach((button, index) => {
     button.dataset.check = index;
     button.onclick = () => {
-      array.splice(+button.dataset.check, 1);
-      displayBook(array);
+      myLibrary.splice(+button.dataset.check, 1);
+      displayBook();
     };
   });
 }
 
-displayBook(myLibrary);
+displayBook();

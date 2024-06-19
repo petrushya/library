@@ -99,7 +99,7 @@ form{
   top: 20vh;
   left: -40ch;
   inline-size: 35ch;
-  padding-block-end: 1rlh;
+  padding-block-end: 0.5rlh;
   background-color: hsl(240, 64%, 95%);
   border-radius: 1rlh;
   box-shadow: 0 0 5ch hsl(240, 64%, 25%);
@@ -123,7 +123,7 @@ fieldset{
   row-gap: 1.5ch;
   text-align: start;
   padding: 0;
-  margin: 1rlh 1rlh 2rlh;
+  margin: 1rlh;
   border: none;
 }
 legend{
@@ -139,8 +139,8 @@ input{
   inline-size: 97.5%;
   margin-block-start: 0.125lh;
 }
-#btnAddBook{
-  margin-inline-end: 1.5rlh;
+#btnAddBook, .btnReset{
+  margin: 0.5rlh;
 }
 .btnClozeForm{
   position: absolute;
@@ -156,3 +156,4 @@ input{
   outline-color: hsl(240, 64%, 40%);
   color: hsl(240, 64%, 99%);
 }
+
