@@ -96,24 +96,22 @@ button:is(:hover, :focus){
 
 form{
   position: absolute;
-  top: 20vh;
-  left: -40ch;
+  top: 50%;
+  left: -25%;
   inline-size: 35ch;
   padding-block-end: 0.5rlh;
   background-color: hsl(240, 64%, 95%);
   border-radius: 1rlh;
   box-shadow: 0 0 5ch hsl(240, 64%, 25%);
   text-align: center;
-  transform: translateX(0);
-  visibility: visible;
-  opacity: 1;
-  transition-property: transform, visibility, opacity;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  transition-property: left, visibility;
   transition-duration: 500ms;
 }
 form.transform{
-  transform: translateX(calc(50vi + 21ch));
+  left: 50%;
   visibility: visible;
-  opacity: 1;
 }
 fieldset{
   display: flex;
@@ -156,4 +154,6 @@ input{
   outline-color: hsl(240, 64%, 40%);
   color: hsl(240, 64%, 99%);
 }
-
+button font, tfoot font, thead font{
+  color: hsl(240, 64%, 99%);
+}

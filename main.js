@@ -105,17 +105,15 @@ function displayBook(){
       const tableCell = document.createElement('td');
       tableCell.appendChild(item);
       tableRow.appendChild(tableCell);
+      if(item.tagName.toLowerCase() === 'button'){
+        item.onclick = () => {
+          myLibrary.splice(index, 1);
+          displayBook();
+        };
+      };
     });
     tbody.appendChild(tableRow);
   };
-  const btnDelet = document.querySelectorAll('.deleteBook');
-  btnDelet.forEach((button, index) => {
-    button.dataset.check = index;
-    button.onclick = () => {
-      myLibrary.splice(+button.dataset.check, 1);
-      displayBook();
-    };
-  });
 }
 
 displayBook();
