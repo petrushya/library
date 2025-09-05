@@ -1,119 +1,135 @@
-
-*{
-  margin: 0;
-  color: hsl(240, 64%, 25%);
+html {
+  --txt: 25%;
+  --bg: 95%;
+  --tablebg: 75%;
+  --light: 99%;
+  --thdark: 40%;
 }
-.all-wrapper{
-  background-color: hsl(240, 64%, 95%);
+* {
+  margin: 0;
+  color: hsl(240, 64%, var(--txt));
+}
+.all-wrapper {
+  background-color: hsl(240, 64%, var(--bg));
   min-block-size: 100vh;
+  inline-size: 100vw;
   font-family: sans-serif;
 }
 
-table{
+table {
   margin: 0 auto;
-  background-color: hsl(240, 64%, 75%);
-  border-inline-start: thick solid hsl(240, 64%, 75%);
-  border-inline-end: thick solid hsl(240, 64%, 75%);
+  background-color: hsl(240, 64%, var(--tablebg));
+  border-inline-start: thick solid hsl(240, 64%, var(--tablebg));
+  border-inline-end: thick solid hsl(240, 64%, var(--tablebg));
   border-collapse: collapse;
   caret-color: transparent;
 }
-caption{
-  margin: 3lh 0 0.25lh;
+caption {
+  margin: 0.25lh 0;
   font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
 }
-th,td{
+th,
+td {
   text-align: center;
 }
-th{
-  border-inline-end: thick solid hsl(240, 64%, 75%);
-  color: hsl(240, 64%, 99%);
+th {
+  border-inline-end: thick solid hsl(240, 64%, var(--tablebg));
+  color: hsl(240, 64%, var(--light));
 }
-thead th{
-  background: linear-gradient(hsl(240, 64%, 75%), hsl(240, 64%, 40%));
-  border-block-end: thick solid hsl(240, 64%, 75%);
+thead th {
+  background: linear-gradient(
+    hsl(240, 64%, var(--tablebg)),
+    hsl(240, 64%, var(--thdark))
+  );
+  border-block-end: thick solid hsl(240, 64%, var(--tablebg));
   text-transform: uppercase;
   font-size: 1.25rem;
   padding: 0.75rlh;
 }
-tbody th{
-  border-inline-end: thin solid hsl(240, 64%, 75%);
-  color: hsl(240, 64%, 25%);
+tbody th {
+  border-inline-end: thin solid hsl(240, 64%, var(--tablebg));
+  color: hsl(240, 64%, var(--txt));
 }
-tbody td, select{
+tbody td,
+select {
   font-size: 1.125rem;
   padding: 0.25rlh 0.5rlh;
 }
-tbody td + td{
-  border-inline-start: thin solid hsl(240, 64%, 75%);
+tbody td + td {
+  border-inline-start: thin solid hsl(240, 64%, var(--tablebg));
 }
-tbody tr:nth-child(odd){
-  background-color: hsl(240, 64%, 99%);
+tbody tr:nth-child(odd) {
+  background-color: hsl(240, 64%, var(--light));
 }
-tbody tr:nth-child(even){
-  background-color: hsl(240, 64%, 95%);
+tbody tr:nth-child(even) {
+  background-color: hsl(240, 64%, var(--bg));
 }
-tbody td:nth-child(2)::first-letter, tbody td:nth-child(3){
+tbody td:nth-child(2)::first-letter,
+tbody td:nth-child(3) {
   text-transform: capitalize;
 }
-tfoot td{
-  background: linear-gradient(to top, hsl(240, 64%, 75%), hsl(240, 64%, 40%));
+tfoot td {
+  background: linear-gradient(
+    to top,
+    hsl(240, 64%, var(--tablebg)),
+    hsl(240, 64%, var(--thdark))
+  );
   padding: 0.375rlh 0;
-  border-block-start: thick solid hsl(240, 64%, 75%);
+  border-block-start: thick solid hsl(240, 64%, var(--tablebg));
 }
-select{
+select {
   padding: 0.375rlh;
   font-weight: bold;
   font-variant: small-caps;
   background-color: transparent;
-  border: thin solid hsl(240, 64%, 40%, 0);
+  border: thin solid hsla(240, 64%, var(--thdark), 0);
   border-radius: 1ch;
 }
-select:is(:hover, :focus){
-  outline: thin solid hsl(240, 64%, 40%);
+select:is(:hover, :focus) {
+  outline: thin solid hsl(240, 64%, var(--thdark));
 }
-select, button{
+select,
+button {
   cursor: pointer;
-  outline-color: hsl(240, 64%, 40%);
+  outline-color: hsl(240, 64%, var(--thdark));
 }
 
-button{
+button {
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: bold;
   padding: 0.5rlh 1.5rlh;
-  background-color: hsl(240, 64%, 25%);
+  background-color: hsl(240, 64%, var(--txt));
   border: none;
   border-radius: 1ch;
-  box-shadow: inset 0 0 1ch hsl(240, 64%, 95%);
+  box-shadow: inset 0 0 1ch hsl(240, 64%, var(--bg));
   caret-color: transparent;
-  color: hsl(240, 64%, 99%);
+  color: hsl(240, 64%, var(--light));
 }
-button:is(:hover, :focus){
-  background-color: hsl(240, 64%, 40%);
+button:is(:hover, :focus) {
+  background-color: hsl(240, 64%, var(--thdark));
 }
 
-form{
+form {
   position: absolute;
   top: 50%;
   left: -25%;
   inline-size: 35ch;
   padding-block-end: 0.5rlh;
-  background-color: hsl(240, 64%, 95%);
+  background-color: hsl(240, 64%, var(--bg));
   border-radius: 1rlh;
-  box-shadow: 0 0 5ch hsl(240, 64%, 25%);
+  box-shadow: 0 0 5ch hsl(240, 64%, var(--txt));
   text-align: center;
   transform: translate(-50%, -50%);
-  visibility: hidden;
-  transition-property: left, visibility;
+  transition-property: left;
   transition-duration: 500ms;
 }
-form.transform{
+form.transform {
   left: 50%;
-  visibility: visible;
 }
-fieldset{
+fieldset {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -124,36 +140,39 @@ fieldset{
   margin: 1rlh;
   border: none;
 }
-legend{
+legend {
   font-weight: bold;
   font-size: 1.25em;
   margin-block-end: 1rlh;
 }
-label{
+label {
   inline-size: 100%;
   display: block;
 }
-input{
+input {
   inline-size: 97.5%;
   margin-block-start: 0.125lh;
 }
-#btnAddBook, .btnReset{
+#btnAddBook,
+.btnReset {
   margin: 0.5rlh;
 }
-.btnClozeForm{
+.btnClozeForm {
   position: absolute;
   top: 2%;
   right: 1.5%;
   padding: 0 0.25lh;
   font-size: 1.5rem;
-  border: thin solid hsl(240, 64%, 25%);
-  background-color: hsl(240, 64%, 95%);
-  color: hsl(240, 64%, 25%);
+  border: thin solid hsl(240, 64%, var(--txt));
+  background-color: hsl(240, 64%, var(--bg));
+  color: hsl(240, 64%, var(--txt));
 }
-.btnClozeForm:is(:hover, :focus){
-  outline-color: hsl(240, 64%, 40%);
-  color: hsl(240, 64%, 99%);
+.btnClozeForm:is(:hover, :focus) {
+  outline-color: hsl(240, 64%, var(--thdark));
+  color: hsl(240, 64%, var(--light));
 }
-button font, tfoot font, thead font{
-  color: hsl(240, 64%, 99%);
+button font,
+tfoot font,
+thead font {
+  color: hsl(240, 64%, var(--light));
 }

@@ -9,17 +9,18 @@ const btnClozeForm = document.querySelector('.btnClozeForm');
 const btnClean = document.querySelector('.btnReset');
 
 class Book {
-  constructor(title, author, pages){
-    this.bookInfo = [this.title = title, this.author = author, this.pages = pages];
+  constructor(title, author, pages) {
+    this.bookInfo =
+      [this.title = title, this.author = author, this.pages = pages];
   }
-  #status(){
+  #status() {
     const select = document.createElement('select');
     const optionOne = document.createElement('option');
+    const optionTwo = document.createElement('option');
     optionOne.textContent = 'not read yet';
     optionOne.setAttribute('name', 'not');
     optionOne.setAttribute('selected', '');
     select.appendChild(optionOne);
-    const optionTwo = document.createElement('option');
     optionTwo.textContent = 'alreade read';
     optionTwo.setAttribute('name', 'yes');
     select.appendChild(optionTwo);
@@ -29,14 +30,14 @@ class Book {
     };
     return select;
   }
-  #btnDelet(){
+  #btnDelet() {
     const button = document.createElement('button');
     button.textContent = 'delete';
-    button.setAttribute('type', 'button');
+    button.type = 'button';
     button.className = 'deleteBook';
     return button;
   }
-  get bookData(){
+  bookData() {
     const arr = [];
     this.bookInfo.forEach(item => {
       const p = document.createElement('p');
@@ -49,68 +50,73 @@ class Book {
 }
 
 const myLibrary = [
-  new Book('some new book','very famous author',333).bookData,
-  new Book('very old book','one of several authors',1111).bookData
+  new Book('some new book', 'very famous author', 333).bookData(),
+  new Book('very old book', 'one of several authors', 1111).bookData(),
 ];
 
 btnOpenForm.onclick = () => {
   form.className = 'transform';
-  title.focus();
   btnOpenForm.blur();
-};
+  title.focus();
+}
 
-form.onsubmit = (e) =>{
+form.onsubmit = (e) => {
   e.preventDefault();
-  if(title.value && author.value && pages.value){
-    addBookToLibrary(title.value,author.value,pages.value);
+  if (title.value && author.value && pages.value) {
+    addBookToLibrary(title.value, author.value, pages.value);
     displayBook();
     form.removeAttribute('class');
     title.value = '';
     author.value = '';
     pages.value = '';
-  }else{
+  } else {
     btnAddBook.blur();
-  };
-};
+  }
+}
 
 btnClean.onclick = () => {
   title.focus();
   btnClean.blur();
-};
+}
 
 btnClozeForm.onclick = () => {
   form.removeAttribute('class');
   title.value = '';
   author.value = '';
   pages.value = '';
-};
+}
 
 window.onkeydown = (e) => {
-  if(e.key === 'Escape' && form.className === 'transform') form.removeAttribute('class');
+  if (e.key === 'Escape' && form.className === 'transform') {
+    form.removeAttribute('class');
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+  }
 }
 
-function addBookToLibrary(title,author,pages){
-  myLibrary.push(new Book(title,author,pages).bookData);
+function addBookToLibrary(title,author,pages) {
+  myLibrary.push(new Book(title,author,pages).bookData());
 }
 
-function displayBook(){
-  while(tbody.firstChild) tbody.removeChild(tbody.firstChild);
+function displayBook() {
+  tbody.textContent = '';
   for (let index = 0; index < myLibrary.length; index++) {
     const tableRow = document.createElement('tr');
     const cellHead = document.createElement('th');
-    cellHead.setAttribute('scope', 'row');
+    cellHead.scope = 'row';
     cellHead.textContent = index + 1;
     tableRow.appendChild(cellHead);
     myLibrary[index].forEach(item => {
       const tableCell = document.createElement('td');
       tableCell.appendChild(item);
       tableRow.appendChild(tableCell);
-      if(item.tagName.toLowerCase() === 'button'){
+      if(item.tagName.toLowerCase() === 'button') {
         item.onclick = () => {
           myLibrary.splice(index, 1);
           displayBook();
         };
-      };
+      }
     });
     tbody.appendChild(tableRow);
   };
