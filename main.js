@@ -95,6 +95,7 @@ window.onkeydown = (e) => {
   }
 }
 
+<<<<<<< HEAD
 function Book(title,author,pages){
   this.bookInfo = [title, author, pages];
   this.status = function(){
@@ -132,9 +133,10 @@ function Book(title,author,pages){
     return arr;
   };
   return this.bookData();
-
+=======
 function addBookToLibrary(title,author,pages) {
   myLibrary.push(new Book(title,author,pages).bookData());
+>>>>>>> 50d2d22a18397f2246445d800d93388da33d5430
 }
 
 function displayBook() {
