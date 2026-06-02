@@ -49,8 +49,8 @@ class Book {
 }
 
 const myLibrary = [
-  new Book('some new book', 'very famous author', 333).bookData(),
-  new Book('very old book', 'one of several authors', 1111).bookData(),
+  (new Book('some new book', 'very famous author', 333)).bookData(),
+  (new Book('very old book', 'one of several authors', 1111)).bookData(),
 ];
 
 btnOpenForm.onclick = () => {
