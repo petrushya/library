@@ -8,47 +8,6 @@ const btnOpenForm = document.querySelector('.btnOpenForm');
 const btnClozeForm = document.querySelector('.btnClozeForm');
 const btnClean = document.querySelector('.btnReset');
 
-class Book {
-  constructor(title, author, pages) {
-    this.bookInfo =
-      [this.title = title, this.author = author, this.pages = pages];
-  }
-  #status() {
-    const select = document.createElement('select');
-    const optionOne = document.createElement('option');
-    const optionTwo = document.createElement('option');
-    optionOne.textContent = 'not read yet';
-    optionOne.setAttribute('name', 'not');
-    optionOne.setAttribute('selected', '');
-    select.appendChild(optionOne);
-    optionTwo.textContent = 'alreade read';
-    optionTwo.setAttribute('name', 'yes');
-    select.appendChild(optionTwo);
-    select.onchange = () => {
-      optionOne.setAttribute('disabled', '');
-      select.blur();
-    };
-    return select;
-  }
-  #btnDelet() {
-    const button = document.createElement('button');
-    button.textContent = 'delete';
-    button.type = 'button';
-    button.className = 'deleteBook';
-    return button;
-  }
-  bookData() {
-    const arr = [];
-    this.bookInfo.forEach(item => {
-      const p = document.createElement('p');
-      p.textContent = item;
-      arr.push(p);
-    });
-    arr.push(this.#status(), this.#btnDelet());
-    return arr;
-  }
-}
-
 const myLibrary = [
   new Book('some new book', 'very famous author', 333).bookData(),
   new Book('very old book', 'one of several authors', 1111).bookData(),
@@ -132,6 +91,7 @@ function Book(title,author,pages){
     return arr;
   };
   return this.bookData();
+}
 
 function addBookToLibrary(title,author,pages) {
   myLibrary.push(new Book(title,author,pages).bookData());
