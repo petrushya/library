@@ -72,7 +72,6 @@ function Book(title,author,pages){
   this.btnDelet = function(){
     const btnDelet = document.createElement('button');
     btnDelet.textContent = 'delete';
-    btnDelet.className = 'deleteBook';
     btnDelet.setAttribute('type', 'button');
     return btnDelet;
   };
