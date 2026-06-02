@@ -61,7 +61,7 @@ btnOpenForm.onclick = () => {
 form.onsubmit = (e) => {
   e.preventDefault();
   if (title.value && author.value && pages.value) {
-    addBookToLibrary(title.value, author.value, pages.value);
+    myLibrary.push(new Book(title.value, author.value, pages.value).bookData());
     displayBook();
     form.removeAttribute("class");
     title.value = "";
