@@ -34,7 +34,6 @@ class Book {
     const button = document.createElement('button');
     button.textContent = 'delete';
     button.type = 'button';
-    button.className = 'deleteBook';
     return button;
   }
   bookData() {
@@ -93,50 +92,6 @@ window.onkeydown = (e) => {
     author.value = '';
     pages.value = '';
   }
-}
-
-<<<<<<< HEAD
-function Book(title,author,pages){
-  this.bookInfo = [title, author, pages];
-  this.status = function(){
-    const select = document.createElement('select');
-    select.setAttribute('name', 'choice');
-    const optionOne = document.createElement('option');
-    optionOne.setAttribute('value', 'not');
-    optionOne.setAttribute('selected', '');
-    optionOne.textContent='not read yet';
-    select.appendChild(optionOne);
-    const optionTwo = document.createElement('option');
-    optionTwo.setAttribute('value', 'yes');
-    optionTwo.textContent='already read';
-    select.appendChild(optionTwo);
-    select.onchange = (e) => {
-      if(e.target.value === optionTwo.value) optionOne.setAttribute('disabled', '');
-      select.blur();
-    };
-    return select;
-  };
-  this.btnDelet = function(){
-    const btnDelet = document.createElement('button');
-    btnDelet.textContent = 'delete';
-    btnDelet.setAttribute('type', 'button');
-    return btnDelet;
-  };
-  this.bookData = function(){
-    const arr = [];
-    this.bookInfo.forEach(item => {
-      const para = document.createElement('p');
-      para.textContent = item;
-      arr.push(para);
-    });
-    arr.push(this.status(), this.btnDelet());
-    return arr;
-  };
-  return this.bookData();
-=======
-function addBookToLibrary(title,author,pages) {
-  myLibrary.push(new Book(title,author,pages).bookData());
->>>>>>> 50d2d22a18397f2246445d800d93388da33d5430
 }
 
 function displayBook() {
