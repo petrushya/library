@@ -25,7 +25,7 @@ table {
   caret-color: transparent;
 }
 caption {
-  margin: 0.25lh 0;
+  margin: 0.25rlh 0;
   font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -52,10 +52,18 @@ tbody th {
   border-inline-end: thin solid hsl(240, 64%, var(--tablebg));
   color: hsl(240, 64%, var(--txt));
 }
-tbody td,
-select {
+tbody td {
   font-size: 1.125rem;
   padding: 0.25rlh 0.5rlh;
+}
+tbody td:nth-child(2),
+tbody td:nth-child(3) {
+  text-align: start;
+}
+tbody td:nth-child(5) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 tbody td + td {
   border-inline-start: thin solid hsl(240, 64%, var(--tablebg));
@@ -79,18 +87,6 @@ tfoot td {
   padding: 0.375rlh 0;
   border-block-start: thick solid hsl(240, 64%, var(--tablebg));
 }
-select {
-  padding: 0.375rlh;
-  font-weight: bold;
-  font-variant: small-caps;
-  background-color: transparent;
-  border: thin solid hsla(240, 64%, var(--thdark), 0);
-  border-radius: 1ch;
-}
-select:is(:hover, :focus) {
-  outline: thin solid hsl(240, 64%, var(--thdark));
-}
-select,
 button {
   cursor: pointer;
   outline-color: hsl(240, 64%, var(--thdark));
@@ -100,7 +96,7 @@ button {
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: bold;
-  padding: 0.5rlh 1.5rlh;
+  padding: 0.5rlh 1rlh;
   background-color: hsl(240, 64%, var(--txt));
   border: none;
   border-radius: 1ch;
@@ -111,12 +107,23 @@ button {
 button:is(:hover, :focus) {
   background-color: hsl(240, 64%, var(--thdark));
 }
+.drop {
+  margin-inline-start: 0.5rlh;
+  padding-inline: 0.75rlh;
+  font-size: 1.375rem;
+  line-height: 1;
+  border-radius: 0.75ch;
+}
+.drop[disabled] {
+  background-color: hsl(240, 64%, var(--txt), 0.75);
+  cursor: unset;
+}
 
 form {
   position: absolute;
   top: 50%;
   left: -25%;
-  inline-size: 35ch;
+  inline-size: 43ch;
   padding-block-end: 0.5rlh;
   background-color: hsl(240, 64%, var(--bg));
   border-radius: 1rlh;
@@ -134,7 +141,7 @@ fieldset {
   flex-direction: column;
   justify-content: flex-start;
   align-items: start;
-  row-gap: 1.5ch;
+  gap: 0.35rlh;
   text-align: start;
   padding: 0;
   margin: 1rlh;
@@ -143,36 +150,41 @@ fieldset {
 legend {
   font-weight: bold;
   font-size: 1.25em;
-  margin-block-end: 1rlh;
+  margin-block-end: 0.5rlh;
 }
 label {
   inline-size: 100%;
   display: block;
+  & input {
+    inline-size: 98%;
+    margin-block-start: 0.125rlh;
+  }
 }
-input {
-  inline-size: 97.5%;
-  margin-block-start: 0.125lh;
+label:last-child {
+  display: flex;
+  column-gap: 1ch;
+  align-items: center;
+  margin-block-start: 0.75rlh;
 }
 #btnAddBook,
-.btnReset {
+#btnReset {
   margin: 0.5rlh;
 }
-.btnClozeForm {
+#btnClozeForm {
   position: absolute;
   top: 2%;
   right: 1.5%;
-  padding: 0 0.25lh;
+  padding: 0 0.25rlh;
   font-size: 1.5rem;
   border: thin solid hsl(240, 64%, var(--txt));
   background-color: hsl(240, 64%, var(--bg));
   color: hsl(240, 64%, var(--txt));
 }
-.btnClozeForm:is(:hover, :focus) {
+#btnClozeForm:is(:hover, :focus) {
   outline-color: hsl(240, 64%, var(--thdark));
-  color: hsl(240, 64%, var(--light));
+  color: hsl(240, 64%, var(--tablebg));
 }
-button font,
-tfoot font,
-thead font {
+button,
+thead th {
   color: hsl(240, 64%, var(--light));
 }

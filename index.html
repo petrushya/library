@@ -25,7 +25,7 @@
       <tfoot>
         <tr>
           <td colspan="6">
-            <button type="button" class="btnOpenForm">add book</button>
+            <button type="button" id="btnOpenForm">add book</button>
           </td>
         </tr>
       </tfoot>
@@ -33,17 +33,17 @@
     <form method="get">
       <fieldset>
         <legend>Data of a new book</legend>
-        <p aria-label="required">All fields are required.</p>
-        <label for="title">Title:
+        <p>All fields are required.</p>
+        <label>Title:
           <input type="text" id="title" name="title" required></label>
-        <label for="author">Author:
+        <label>Author:
           <input type="text" id="author" name="author" required></label>
-        <label for="pages">Pages:
+        <label>Pages:
           <input type="number" id="pages" name="pages" min="4" required></label>
       </fieldset>
       <button type="submit" id="btnAddBook">add book</button>
-      <button type="reset" class="btnReset">cleanse</button>
-      <button type="button" class="btnClozeForm" translate="no">X</button>
+      <button type="reset" id="btnReset">cleanse</button>
+      <button type="button" id="btnClozeForm" translate="no">X</button>
     </form>
   </div>
 </body>
